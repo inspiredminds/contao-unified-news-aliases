@@ -15,4 +15,4 @@ _Note:_ this extension does not actually allow you to _save_ duplicate aliases i
 Assuming that the language settings of your news archives are already properly set up there are only two steps necessary to use the functionality of this extension:
 
 1. Enable the unified aliases in the language settings of your main news archive.
-2. Use the _Newsreader for unified aliases_ newsreader module instead of the regular newsreader module.
+2. Use the _Newsreader for unified aliases_ module instead of the regular newsreader module.
