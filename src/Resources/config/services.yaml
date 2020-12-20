@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    
+    InspiredMinds\ContaoUnifiedNewsAliases\:
+        resource: ../../
+        exclude: ../../{ModuleNewsHelper.php,Resources}
