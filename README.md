@@ -8,7 +8,7 @@ This Contao extensions allows you to use the same news alias for the same news a
 
 In Contao, each and every news article must have a unique alias. However there are use cases where you might want to use the same alias for translated news articles. This extension allows you to always use the alias of the main news archive in the front end.
 
-_Note:_ this extension does not actually allow you to _save_ duplicate aliases in the back end. The extension only affects the news URLs ofr news modules in the front end and provides an additional newsreader module.
+_Note:_ this extension does not actually allow you to _save_ duplicate aliases in the back end. The extension only affects the news URLs of news modules in the front end and provides an additional newsreader module.
 
 ## Usage
 
