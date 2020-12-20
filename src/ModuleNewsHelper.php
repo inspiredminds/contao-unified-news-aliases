@@ -16,7 +16,7 @@ use Contao\ModuleNews;
 use Contao\NewsModel;
 
 /**
- * Helper class to expose publicly ModuleNews::generateLink().
+ * Helper class to expose ModuleNews::generateLink().
  */
 class ModuleNewsHelper extends ModuleNews
 {
