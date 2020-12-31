@@ -23,7 +23,7 @@ use InspiredMinds\ContaoUnifiedNewsAliases\UnifiedNewsAliases;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @FrontendModule(NewsReaderModuleController::TYPE, category="news")
+ * @FrontendModule(NewsReaderModuleController::TYPE, category="news", template="mod_newsreader")
  */
 class NewsReaderModuleController extends ModuleNewsReader
 {
