@@ -16,3 +16,7 @@ Assuming that the language settings of your news archives are already properly s
 
 1. Enable the unified aliases in the language settings of your main news archive.
 2. Use the _Newsreader for unified aliases_ module instead of the regular newsreader module.
+
+## Attributions
+
+Development funded by [interAKTIV.net GmbH](https://www.interaktiv.net/).
