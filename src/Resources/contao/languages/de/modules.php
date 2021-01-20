@@ -14,5 +14,5 @@ use InspiredMinds\ContaoUnifiedNewsAliases\Controller\FrontendModule\NewsReaderM
 
 $GLOBALS['TL_LANG']['FMD'][NewsReaderModuleController::TYPE] = [
     $GLOBALS['TL_LANG']['FMD']['newsreader'][0].' für vereinheitlichte Aliase',
-    'Dieser Nachrichtenleser erlaubt die Darstellung von Nachrichten über den vereinheitlichen Nachrichtenalias (also den Nachrichten-Alias aus dem Hauptarchiv).',
+    'Dieser Nachrichtenleser erlaubt die Darstellung von Nachrichten über den vereinheitlichten Nachrichtenalias (also den Nachrichten-Alias aus dem Hauptarchiv).',
 ];
