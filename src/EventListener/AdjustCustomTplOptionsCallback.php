@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
-namespace InspiredMinds\ContaoUnifiedEventAliases\EventListener;
+namespace InspiredMinds\ContaoUnifiedNewsAliases\EventListener;
 
 use Contao\Controller;
 use Contao\CoreBundle\ServiceAnnotation\Callback;
