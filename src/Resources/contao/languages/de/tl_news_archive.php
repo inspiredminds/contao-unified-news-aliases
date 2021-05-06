@@ -10,4 +10,4 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
-$GLOBALS['TL_LANG']['tl_news_archive']['use_unified_aliases'] = ['Vereinheitliche Aliase benutzen', 'Aktiviert die Benutzung vereinheitlichter Nachrichtenaliase für dieses Archiv.'];
+$GLOBALS['TL_LANG']['tl_news_archive']['use_unified_aliases'] = ['Vereinheitlichte Aliase benutzen', 'Aktiviert die Benutzung vereinheitlichter Nachrichtenaliase für dieses Archiv.'];
