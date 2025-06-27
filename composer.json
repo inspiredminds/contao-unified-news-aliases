@@ -23,13 +23,13 @@
         }
     ],
     "require": {
-        "php": "^7.2 || ^8.0",
-        "contao/core-bundle": "^4.9",
-        "contao/news-bundle": "^4.9",
-        "symfony/dependency-injection": "^4.4 || ^5.2",
-        "symfony/event-dispatcher": "^4.4 || ^5.2",
-        "symfony/http-kernel": "^4.4 || ^5.2",
-        "terminal42/contao-changelanguage": "^3.1"
+        "php": ">=8.2",
+        "contao/core-bundle": "^5.3",
+        "contao/news-bundle": "^5.3",
+        "symfony/dependency-injection": "^6.4 || ^7.3",
+        "symfony/event-dispatcher": "^6.4 || ^7.3",
+        "symfony/http-kernel": "^6.4 || ^7.3",
+        "terminal42/contao-changelanguage": "^3.2"
     },
     "autoload": {
         "psr-4": {
@@ -40,6 +40,14 @@
         "contao-manager-plugin": "InspiredMinds\\ContaoUnifiedNewsAliases\\ContaoManager\\Plugin"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "contao/easy-coding-standard": "^6.0",
+        "contao/rector": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

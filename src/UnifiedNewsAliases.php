@@ -19,11 +19,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class UnifiedNewsAliases
 {
-    private $requestStack;
-
-    public function __construct(RequestStack $requestStack)
+    public function __construct(private readonly RequestStack $requestStack)
     {
-        $this->requestStack = $requestStack;
     }
 
     /**
@@ -63,7 +60,7 @@ class UnifiedNewsAliases
 
         $request = $this->requestStack->getCurrentRequest();
 
-        if (null === $request) {
+        if (!$request) {
             throw new \RuntimeException('Could not get current request.');
         }
 
@@ -87,7 +84,7 @@ class UnifiedNewsAliases
     /**
      * Returns the main news record for the given news, if applicable.
      */
-    public function getMainNews(NewsModel $news): ?NewsModel
+    public function getMainNews(NewsModel $news): NewsModel|null
     {
         if (0 === (int) $news->languageMain) {
             return null;
@@ -99,13 +96,13 @@ class UnifiedNewsAliases
     /**
      * Returns the associated news for the given news and language.
      */
-    public function getNewsForLanguage(NewsModel $news, string $language): ?NewsModel
+    public function getNewsForLanguage(NewsModel $news, string $language): NewsModel|null
     {
         $searchId = (int) ($news->languageMain ?: $news->id);
         $t = NewsModel::getTable();
         $articles = NewsModel::findBy(
             ["($t.id = ? OR $t.languageMain = ?)"],
-            [$searchId, $searchId]
+            [$searchId, $searchId],
         );
 
         if (null === $articles) {
@@ -136,11 +133,11 @@ class UnifiedNewsAliases
     /**
      * Returns the associated news for the given news and the current language.
      */
-    public function getNewsForCurrentLanguage(NewsModel $news): ?NewsModel
+    public function getNewsForCurrentLanguage(NewsModel $news): NewsModel|null
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        if (null === $request) {
+        if (!$request) {
             throw new \RuntimeException('Could not get current request.');
         }
 

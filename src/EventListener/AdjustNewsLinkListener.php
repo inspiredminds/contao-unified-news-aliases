@@ -3,37 +3,31 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Contao Unified News Aliases extension.
- *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoUnifiedNewsAliases\EventListener;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\FrontendTemplate;
-use Contao\News;
 use Contao\NewsModel;
 use InspiredMinds\ContaoUnifiedNewsAliases\ModuleNewsHelper;
 use InspiredMinds\ContaoUnifiedNewsAliases\UnifiedNewsAliases;
+use Symfony\Component\Routing\Exception\ExceptionInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * @Hook("parseArticles")
- */
+#[AsHook('parseArticles')]
 class AdjustNewsLinkListener
 {
-    private $unifiedNewsAliases;
     private $newsHelper;
-    private $translator;
 
-    public function __construct(UnifiedNewsAliases $unifiedNewsAliases, TranslatorInterface $translator)
-    {
-        $this->unifiedNewsAliases = $unifiedNewsAliases;
+    public function __construct(
+        private readonly UnifiedNewsAliases $unifiedNewsAliases,
+        private readonly TranslatorInterface $translator,
+        private readonly ContentUrlGenerator $contentUrlGenerator,
+    ) {
         $this->newsHelper = new ModuleNewsHelper();
-        $this->translator = $translator;
     }
 
     public function __invoke(FrontendTemplate $template, array $newsEntry): void
@@ -44,9 +38,7 @@ class AdjustNewsLinkListener
             return;
         }
 
-        $mainNews = $this->unifiedNewsAliases->getMainNews($news);
-
-        if (null === $mainNews) {
+        if (!$mainNews = $this->unifiedNewsAliases->getMainNews($news)) {
             return;
         }
 
@@ -57,6 +49,11 @@ class AdjustNewsLinkListener
 
         $template->linkHeadline = $this->newsHelper->generateHtmlLink($news->headline, $news);
         $template->more = $this->newsHelper->generateHtmlLink($this->translator->trans('MSC.more', [], 'contao_default'), $news, false, true);
-        $template->link = News::generateNewsUrl($news);
+
+        try {
+            $template->link = $this->contentUrlGenerator->generate($news);
+        } catch (ExceptionInterface) {
+            // noop
+        }
     }
 }
