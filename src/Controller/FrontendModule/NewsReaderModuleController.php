@@ -101,9 +101,7 @@ class NewsReaderModuleController extends ModuleNewsReader
             return;
         }
 
-        $news->preventSaving();
-
-        $news->id = 'clone-'.$news->id;
+        $news = $news->cloneDetached();
         $news->alias = $mainNews->alias;
 
         throw new RedirectResponseException($this->contentUrlGenerator->generate($news, [], UrlGeneratorInterface::ABSOLUTE_URL), Response::HTTP_MOVED_PERMANENTLY);

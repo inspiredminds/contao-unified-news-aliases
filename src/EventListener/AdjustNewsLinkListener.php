@@ -42,9 +42,7 @@ class AdjustNewsLinkListener
             return;
         }
 
-        $news->preventSaving();
-
-        $news->id = 'clone-'.$newsEntry['id'];
+        $news = $news->cloneDetached();
         $news->alias = $mainNews->alias;
 
         $template->linkHeadline = $this->newsHelper->generateHtmlLink($news->headline, $news);
